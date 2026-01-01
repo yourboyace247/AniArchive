@@ -98,10 +98,10 @@ You can search for Anime in your watchlist, the results will be successfull only
 
 There is a selector in the watchlist page, and you can basically filter the Animes in your list by status.
 
-![Watching](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Watching.png)
-![Completed](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Completed.png)
-![PlanToWatch](https://github.com/yourboyace247/AniArchive/blob/main/imgs/PlanToWatch.png)
-![Dropped](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Dropped.png)
+![Watching](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Watching.png)<br>
+![Completed](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Completed.png)<br>
+![PlanToWatch](https://github.com/yourboyace247/AniArchive/blob/main/imgs/PlanToWatch.png)<br>
+![Dropped](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Dropped.png)<br>
 
 By default All the Animes in your watchlist are getting displayed, despite the status declared on them.
 
