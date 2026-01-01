@@ -1,6 +1,6 @@
 # :cherry_blossom: AniArchive
 
-### AniArchive Anime List Applicartion using React
+### AniArchive Anime List Application using React
 
 # :cherry_blossom: Home Page!
 ![UI](https://github.com/yourboyace247/AniArchive/blob/main/imgs/UI.png)
