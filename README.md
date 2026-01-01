@@ -15,7 +15,7 @@ Browse button directs you to the Home Page of the website.
 ### My List:
 ![My-List-btn](https://github.com/yourboyace247/AniArchive/blob/main/imgs/My-List-btn.png)
 
-My List button directs you to the page with all the Anime you have added to your watch list.
+My List button directs you to the page with all the Anime you have added to your watchlist.
 
 ### Search:
 ![Search-in-browse](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Search-in-browse.png)
@@ -26,7 +26,7 @@ In Search input you can search for an Anime.
 ![Anime-card](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Anime-card.png)
 
 This is the how each Anime gets displayed in website.<br>
-You can see the Anime picture,with the Title, the Rating (fetch by th API).<br>
+You can see the Anime picture,with the Title, & the Rating (fetched by th API).<br>
 
 ### Add button:
 ![Add-anime-btn](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Add-anime-btn.png)
@@ -36,16 +36,16 @@ Button to add an Anime to your list.
 ### Add Anime in Watchlist Card
 ![Add-anime-in-list-card](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Add-anime-in-list-card.png)
 
-Uppon clicking to add an Anime to your watch list this card appears in order for you to add your details for the Anime.
+Uppon clicking to add an Anime to your watchlist this card appears in order for you to add your details for the Anime.
 
 ### Status of Anime:
 ![Anime-status](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Anime-status.png)
 
 On the first selector of the card you will have to add the status of the Anime<br>
-"Watching": If you are currently watching this Anime.
-"Completed": If you have completed watching this Anime.
-"Plan to watch": If you plan to watch this Anime in the future.
-"Droppped": If you stopped watching this Anime.
+"Watching": If you are currently watching this Anime.<br>
+"Completed": If you have completed watching this Anime.<br>
+"Plan to watch": If you plan to watch this Anime in the future.<br>
+"Droppped": If you stopped watching this Anime.<br>
 
 ### Rating:
 ![Rating](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Rating.png)
@@ -55,7 +55,7 @@ Next selector is for rating the Anime between 1 to 10 :star:
 ### Date:
 ![Date-start-finish](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Date-start-finish.png)
 
-The selector after the rating is for the Started date, so you basically add the Date you start watching the Anime.<br>
+The selector after the rating is for the Started date, so you basically add the Date you started watching the Anime.<br>
 The final selector is for the date you have finished the Anime.
 
 ### Save button:
@@ -81,7 +81,7 @@ After you add an Anime to your list, the Remove button appears so you can remove
 ### Anime Details Page:
 ![Anime-details-page](https://github.com/yourboyace247/AniArchive/blob/main/imgs/Anime-details-page.png)
 
-Anime Details Page. Details related to the Anime, like the plot, genre, episodes etc... (fetch from API).
+Anime Details Page. Details related to the Anime, like the plot, genre, episodes etc... (fetched from API).
 
 ### My List Page:
 ![My-List-page](https://github.com/yourboyace247/AniArchive/blob/main/imgs/My-List-page.png)
@@ -109,7 +109,8 @@ By default All the Animes in your watchlist are getting displayed, despite the s
 
 You can watch my video presentation, and check in action how the website works.
 
-## React installation & details.
+# React installation & details.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
