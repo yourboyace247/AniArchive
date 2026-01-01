@@ -3,29 +3,40 @@ import axios from 'axios';
 import { useKey } from "./useKey";
 import { useLocalStorageState } from "./useLocalStorageState";
 import MyList from "./MyList";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import AnimeDetailPage from "./AnimeDetailPage";
+import Modal from "./Modal";
+import { useLocation } from 'react-router-dom';
 
 export default function App() {
   const [animeList, setAnimeList] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [userList, setUserList] = useLocalStorageState([], 'savedAnimeList');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAnime, setSelectedAnime] = useState(null);
+  const location = useLocation();
 
-  function addToUserList(anime) {
-    const alreadyExists = userList.some(item => item.mal_id === anime.mal_id);
 
-    if (alreadyExists) {
-      alert("Anime is already in your list!"); return;  
-    }
+function saveAnimeWithDetails(anime, formData) {
+  const alreadyExists = userList.some(item => item.mal_id === anime.mal_id);
+  
+  if (alreadyExists) {
+    alert("Anime is already in your list!");
+    return;
+  }
 
-    const animeToAdd = {...anime,
-      userRating: null,
-      status: 'Plan to Watch',
-      added: new Date().toISOString()
-    };
+  const animeToAdd = {
+    ...anime,
+    userRating: formData.rating ? parseInt(formData.rating) : null,
+    status: formData.status,
+    startDate: formData.dateStarted || null,
+    finishDate: formData.dateFinished || null,
+    addedDate: new Date().toISOString()
+  };
 
-    setUserList([...userList, animeToAdd]);
+  setUserList(prev => [...prev, animeToAdd]);
 }
 
   function removeFromUserList(animeId) {
@@ -76,7 +87,9 @@ useEffect(() => {
     <div className="container">
       <h1>🌸AniArchive</h1>
       <NavBar userList={userList}>
+        {location.pathname !== '/mylist' && (
         <Search query={searchQuery} setQuery={setSearchQuery} />
+        )}
       </NavBar>
       <Routes>
         <Route path="/" element={
@@ -96,21 +109,35 @@ useEffect(() => {
               {isAnimeInList(anime.mal_id) ? (
               <button className="remove-btn" onClick={() => removeFromUserList(anime.mal_id)}>⛔</button>
               ) : (
-              <button className="add-btn" onClick={() => addToUserList(anime)}>➕</button>
-              )}
+              <button className="add-btn" onClick={() => {setSelectedAnime(anime);setIsModalOpen(true);}}>
+                ➕
+              </button>              )}
+              <Link to={`/anime/${anime.mal_id}`}>
+                <button className="details-btn">📖</button>
+              </Link>
             </div>
         ))}
       </div>
     )}
     </div>
 } />
-    <Route path="/mylist" element={
+        <Route path="/mylist" element={
             <MyList 
               userList={userList}
               removeFromUserList={removeFromUserList}
             />
           } />
+        <Route path="/anime/:id" element={<AnimeDetailPage />} />
         </Routes>
+        <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        anime={selectedAnime}
+        onSave={(formData) => {
+          saveAnimeWithDetails(selectedAnime, formData);  // <-- Τώρα υπάρχει!
+          setIsModalOpen(false);
+        }}
+      />
       </div>
     );
 }
