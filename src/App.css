@@ -1,5 +1,3 @@
-/* App.css */
-
 /* ====== BASE STYLES & VARIABLES ====== */
 :root {
   /* Sakura Color Palette */
@@ -331,7 +329,6 @@ h3 {
   background: var(--sakura-light);
 }
 
-/* Minimal version */
 .add-btn, .remove-btn {
   padding: 0.5rem 1rem;
   border: none;
@@ -342,7 +339,7 @@ h3 {
   transition: transform 0.2s;
 }
 
-.add-btn:hover, .remove-btn:hover {
+.add-btn:hover, .remove-btn:hover, .details-btn:hover {
   transform: scale(1.1);
 }
 
@@ -357,6 +354,17 @@ h3 {
   background-color: #ff6b6b;
   color: white;
   margin-top: auto;
+  align-self: flex-start;
+}
+
+.details-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: var(--sakura-pink);
+  color: white;
+  margin-top: 20px;
   align-self: flex-start;
 }
 
@@ -547,4 +555,368 @@ h3 {
 @keyframes float {
   0% { transform: translateY(0) rotate(0deg); }
   100% { transform: translateY(-100vh) rotate(360deg); }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 28px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Modal Title */
+.modal-content h2 {
+  margin: 0 0 24px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3436;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Common styles for selects and inputs */
+.modal-content select,
+.modal-content input[type="date"] {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #333;
+  background-color: #fafafa;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Focus states */
+.modal-content select:focus,
+.modal-content input[type="date"]:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Hover states */
+.modal-content select:hover,
+.modal-content input[type="date"]:hover {
+  border-color: #bdc3c7;
+}
+
+/* Style the select dropdown arrow */
+.modal-content select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Button Container */
+.modal-content .save-btn,
+.modal-content .cancel-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Save Button */
+.modal-content .save-btn {
+  background-color: var(--sakura-pink);
+  color: white;
+  margin-top: 24px;
+}
+
+.modal-content .save-btn:hover {
+  background-color: var(--sakura-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.modal-content .save-btn:active {
+  transform: translateY(0);
+}
+
+/* Cancel Button */
+.modal-content .cancel-btn {
+  background-color: #f8f9fa;
+  color: #555;
+  border: 2px solid #e9ecef;
+}
+
+.modal-content .cancel-btn:hover {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+/* Placeholder text color */
+.modal-content input[type="date"]::placeholder {
+  color: #95a5a6;
+}
+
+/* Style for empty date inputs */
+.modal-content input[type="date"]:invalid {
+  color: #95a5a6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 22px;
+    margin: 16px;
+    width: calc(100% - 32px);
+  }
+  
+  .modal-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content select,
+  .modal-content input[type="date"] {
+    padding: 14px;
+  }
+}
+
+/* Optional: Add spacing between form elements */
+.modal-content > *:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+/* Specific spacing adjustments */
+.modal-content select {
+  margin-bottom: 16px;
+}
+
+.modal-content input[type="date"] {
+  margin-bottom: 16px;
+}
+
+/* Custom scrollbar for select (optional) */
+.modal-content select::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content select::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.modal-content select::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.modal-content select::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Custom date input styling */
+.modal-content input[type="date"] {
+  position: relative;
+}
+
+.modal-content input[type="date"]:before {
+  content: attr(placeholder);
+  position: absolute;
+  color: #95a5a6;
+  background-color: #fafafa;
+}
+
+.modal-content input[type="date"]:focus:before,
+.modal-content input[type="date"]:valid:before {
+  content: "";
+}
+
+/* Status Selector Styling */
+.status-selector {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.8rem 1.2rem;
+  margin: 1rem 0 2rem;
+  border: 2px solid var(--sakura-petal);
+  border-radius: var(--radius-lg);
+  background: var(--pure-white);
+  color: var(--dark-gray);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23e75480' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.status-selector:hover {
+  border-color: var(--sakura-pink);
+  box-shadow: var(--shadow-soft);
+}
+
+.status-selector:focus {
+  outline: none;
+  border-color: var(--sakura-dark);
+  box-shadow: var(--shadow-sakura);
+}
+
+.my-list-container {
+  padding: var(--spacing-lg);
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.status-selector option {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Status counters styling */
+.status-counter {
+  font-weight: 600;
+  color: var(--sakura-dark);
+  margin-left: 0.3rem;
+}
+
+.status-selector option[value="watching"] {
+  color: #2ecc71; 
+}
+
+.status-selector option[value="completed"] {
+  color: #3498db; 
+}
+
+.status-selector option[value="planToWatch"] {
+  color: #f39c12; 
+}
+
+.status-selector option[value="dropped"] {
+  color: #e74c3c; 
+}
+
+/* MyList Search - Same as Main Search */
+.my-list-search-container {
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+  position: relative;
+}
+
+.my-list-search-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  padding-left: 3rem;
+  border: 2px solid var(--sakura-petal);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  background: var(--pure-white);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.my-list-search-input:focus {
+  outline: none;
+  border-color: var(--sakura-pink);
+  box-shadow: var(--shadow-sakura);
+}
+
+/* Search icon inside input */
+.my-list-search-container::before {
+  content: "🔍";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sakura-dark);
+  font-size: 1.2rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Clear button styling */
+.clear-search-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--medium-gray);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  color: var(--sakura-dark);
+  background: var(--sakura-light);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .my-list-search-container {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  
+  .my-list-search-input {
+    padding: 0.8rem 2.5rem 0.8rem 2.5rem;
+  }
 }
