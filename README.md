@@ -105,6 +105,18 @@ There is a selector in the watchlist page, and you can basically filter the Anim
 
 By default All the Animes in your watchlist are getting displayed, despite the status declared on them.
 
+# :bulb: Technologies this app shows:
+
+1. Core Framework: React 18, & React Hooks (useState, useEffect,useRef, custom hooks).
+2. Routing & Navigation: React Router Dom (BrowserRouter, Routes, Route, Link, useParams, useLocation).
+3. API Communication: Axios HTTP client for API calls, Jikan REST API v4.
+4. State Management & Storage: React Context, Local Storage (Customer hook useLocalStorage), React State Management (component-level-state).
+5. Keyboard Navigation: Custom Hook (useKey) for keyboard shortcuts.
+6. Asynchronous Operations: Async/Await for API calls, Debouncing for search inputs, & Error Handling with try/catch.
+7. Build Tool: Create React App, ES6+ JavaScript.
+8. Development: ESLint, React Developer Tools, Chrome DevTools.
+9. Architecture Patterns: Component-Based Architectures, Custom Hooks, Props Drilling, Conditional Rendering, Client-Side Routing.
+
 ## :tv: [AniArchive Video Presentation]()
 
 You can watch my video presentation, and check in action how the website works.
